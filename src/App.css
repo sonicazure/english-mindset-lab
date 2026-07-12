@@ -1,0 +1,333 @@
+/* ============================================
+   Navigation Responsive
+   ============================================ */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  .nav-mobile-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-mobile-btn {
+    display: none !important;
+  }
+  .nav-mobile-menu {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   Floating Action Button & Mission Panel
+   ============================================ */
+.fab-container {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff6b00, #ff00cc);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 0, 204, 0.3);
+}
+
+.fab-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(255, 0, 204, 0.4);
+  transition: transform 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fab-btn:active {
+  transform: scale(0.95);
+}
+
+/* Panel backdrop */
+.panel-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+/* Mission panel - mobile first (bottom sheet) */
+.mission-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  max-height: 75vh;
+  overflow-y: auto;
+  background: #111113;
+  border-radius: 20px 20px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.mission-panel-header {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #ff00cc20, #3333ff20);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.panel-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 8px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Desktop: panel floats as card */
+@media (min-width: 640px) {
+  .mission-panel {
+    bottom: 24px;
+    right: 24px;
+    left: auto;
+    width: 340px;
+    max-width: 380px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 0, 204, 0.1);
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .fab-container {
+    bottom: 24px;
+    right: 24px;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ============================================
+   Back to Top Button
+   ============================================ */
+.back-to-top {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 80px !important;
+    left: 16px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* ============================================
+   Mobile Typography & Spacing
+   ============================================ */
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+
+  /* Principle section: disable 3D transform for performance */
+  .principle-container .char {
+    transform: none !important;
+  }
+
+  /* Reduce section padding on small screens */
+  section {
+    padding-top: 8vh !important;
+    padding-bottom: 8vh !important;
+  }
+
+  /* Phase card: reduce padding */
+  .phase-card {
+    padding: 20px 16px !important;
+  }
+}
+
+/* ============================================
+   Phrase cards: ensure single column on narrow screens
+   ============================================ */
+@media (max-width: 400px) {
+  .phrase-card {
+    padding: 14px 16px !important;
+  }
+}
+
+/* ============================================
+   Landscape mobile: optimize layout
+   ============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  #hero {
+    min-height: 400px !important;
+    height: auto !important;
+    padding: 80px 0 40px !important;
+  }
+}
+
+/* ============================================
+   Mobile Touch Targets (WCAG 2.5.5)
+   ============================================ */
+@media (pointer: coarse) {
+  .task-card {
+    min-height: 80px;
+  }
+}
+
+/* ============================================
+   Selection & Focus
+   ============================================ */
+::selection {
+  background: rgba(255, 0, 204, 0.3);
+  color: #ffffff;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #ff00cc;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Prevent horizontal overflow
+   ============================================ */
+html, body {
+  overflow-x: hidden;
+}
+
+/* ============================================
+   Smooth scrolling (without breaking anchor links)
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   Time table responsive: show cards on mobile
+   ============================================ */
+.time-table-mobile {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .time-table-desktop {
+    display: none;
+  }
+  .time-table-mobile {
+    display: block;
+  }
+}
+
+/* ============================================
+   Global touch optimization
+   ============================================ */
+button, a, [role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ============================================
+   Active states for touch feedback
+   ============================================ */
+.task-card:active,
+.phrase-card:active,
+.intro-card:active,
+.resource-card:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+/* ============================================
+   Tasks grid: 2x2 on desktop, 1 column on mobile
+   ============================================ */
+.tasks-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 640px) {
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   Date input dark theme for mobile
+   ============================================ */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+/* ============================================
+   Reduce motion for accessibility
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .mission-panel {
+    animation: none !important;
+  }
+}
